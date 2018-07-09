@@ -1,0 +1,58 @@
+﻿<Window x:Class="Breeze.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Title="Вход" Icon="../icon.ico" Height="380" Width="280" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"  MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="100" />
+            </Grid.RowDefinitions>
+
+            <Controls:MetroProgressBar x:Name="ProgressBarMain" Grid.Row="0" VerticalAlignment="Top" IsIndeterminate="True" Foreground="#007ACC" Margin="0,5,0,0" Visibility="Hidden"/>
+            <TextBlock Grid.Row="0" Text="Выполните вход!" FontSize="25" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
+
+            <Grid Grid.Row="1" Height="80">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Логин:" FontSize="18" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Пароль:" FontSize="18" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
+
+                <TextBlock x:Name="Error1" Grid.Row="0" Grid.Column="2" Text="*" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="OrangeRed" Visibility="Hidden"/>
+                <TextBlock x:Name="Error2" Grid.Row="1" Grid.Column="2" Text="*" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="OrangeRed" Visibility="Hidden"/>
+
+                <TextBox x:Name="LoginTextbox" Grid.Row="0" Grid.Column="1" TextWrapping="NoWrap" Style="{StaticResource LoginTextBox}" Height="30" FontSize="16"/>
+                <PasswordBox x:Name="PasswordTextbox" Grid.Row="1" Grid.Column="1" Style="{StaticResource PasswordBoxStyle}" Height="30" FontSize="16"/>
+            </Grid>
+
+
+            <TextBlock x:Name="MainError" Grid.Row="1" Text="MainError" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="OrangeRed" Width="280" TextAlignment="Center" Visibility="Hidden"/>
+
+            <Grid Grid.Row="2" Height="75" Width="250">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Button x:Name="Cancel" Grid.Column="0" Grid.Row="0" Style="{StaticResource ActionsButtonStyle}" Content="Отмена"  Margin="10,5,10,5" Click="Cancel_Click"/>
+                <Button x:Name="Login" Grid.Column="1" Grid.Row="0" Style="{StaticResource ActionsButtonStyle}" Content="Вход"  Margin="10,5,10,5" Click="Login_Click"/>
+                <Button x:Name="Registration" Grid.Column="0" Grid.Row="1" Style="{StaticResource ActionsButtonStyle}" Content="Регистрация"  Margin="70,5,-50,5" Click="Registration_Click"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

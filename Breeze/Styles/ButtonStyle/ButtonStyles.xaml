@@ -1,0 +1,161 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Geometry x:Key="PlayIcon">F1 M 0,0L 12.9999,9.75006L 12.9999,10.5001L 0,20L 0,0 Z</Geometry>
+    <Geometry x:Key="PauseIcon">F1 M 0,0L 4,0L 4,18L 0,18L 0,0 Z M 10,0L 14,0L 14,18L 10,18L 10,0 Z</Geometry>
+    <Geometry x:Key="VolumeIcon">F1 M 2.00027,5.00073L 6.00084,5.00073L 12.0017,6.10352e-005L 12.0017,17.0024L 6.00084,11.0016L 2.00027,11.0016C 0.895554,11.0016 0,10.106 0,9.00128L 0,7.00104C 0,5.8963 0.895554,5.00073 2.00027,5.00073 Z M 21.0029,8.00116C 21.0029,10.1891 19.9992,12.1427 18.4272,13.4265L 17.0026,12.002C 18.2171,11.0896 19.0026,9.63715 19.0026,8.00116C 19.0026,6.36523 18.2171,4.91278 17.0026,4.00043L 18.4272,2.57587C 19.9992,3.85968 21.0029,5.81317 21.0029,8.00116 Z M 17.0024,8.00116C 17.0024,9.33472 16.1324,10.465 14.9291,10.8556L 14.002,9.00128C 14.5543,9.00128 15.0021,8.55353 15.0021,8.00116C 15.0021,7.44879 14.5543,7.00104 14.002,7.00104L 14.9291,5.14673C 16.1324,5.53729 17.0024,6.66766 17.0024,8.00116 Z</Geometry>
+    <Geometry x:Key="VolumeMuteIcon">F1 M 2.00027,5.00073L 6.00083,5.00073L 12.0017,6.10352e-005L 12.0017,17.0024L 6.00083,11.0016L 2.00027,11.0016C 0.895551,11.0016 0,10.106 0,9.00128L 0,7.00104C 0,5.8963 0.895551,5.00073 2.00027,5.00073 Z M 14.8453,12.0372L 18.3814,8.50116L 14.8453,4.96515L 16.9669,2.84357L 20.503,6.37958L 24.0389,2.84363L 26.1605,4.96527L 22.6246,8.50116L 26.1606,12.0372L 24.039,14.1588L 20.503,10.6228L 16.9669,14.1588L 14.8453,12.0372 Z</Geometry>
+
+    <SolidColorBrush x:Key="AccentBrush" Color="#007ACC" />
+    
+    <Style x:Key="PlayPauseButtonStyle" TargetType="ToggleButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid Name="RootGrid" Background="Transparent">
+                        <Viewbox >
+                            <Border x:Name="IconA" BorderThickness="4" CornerRadius="60" BorderBrush="White" Height="60" Width="60">
+                                <Path  x:Name="Icon" Fill="White" Stretch="Uniform" Margin="20,15,15,15" HorizontalAlignment="Center" Data="{StaticResource PlayIcon}"/>
+                            </Border>
+                        </Viewbox>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Icon" Property="Data" Value="{StaticResource PauseIcon}"/>
+                            <Setter TargetName="Icon" Property="Margin" Value="15"/>
+                            <Setter TargetName="IconA" Property="BorderBrush" Value="White"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsPressed" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Icon" Property="Opacity" Value="1"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsPressed" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Icon" Property="Opacity" Value="1"/>
+                            <Setter TargetName="Icon" Property="Fill" Value="{StaticResource AccentBrush}"/>
+                            <Setter TargetName="IconA" Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="RootGrid" Property="Opacity" Value="1" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="ActionsButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="#007ACC" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <Grid>
+                            <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Black" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="OrangeRed" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#808080" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RemoveStationButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <Grid Height="22" Width="22">
+                            <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Black" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="OrangeRed" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#808080" />
+                            <Setter Property="Foreground" Value="White" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--<ControlTemplate x:Key="VolumeButtonStyle" TargetType="Button">
+        <Grid Background="#00000000">
+            <Path Name="Icon" Data="{StaticResource VolumeIcon}" Fill="White" Stretch="Uniform" Opacity="1"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Icon" Property="Opacity" Value="0.7"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="Icon" Property="Opacity" Value="0.2"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+    <Style x:Key="SettingsButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Transparent"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <SolidColorBrush Color="Transparent"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Image Source="/Radio;component/Images/settings.png"/>
+                    </Grid>
+                    
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+</ResourceDictionary>

@@ -1,0 +1,49 @@
+﻿<Window x:Class="Breeze.Views.ProfileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Профиль" Icon="../icon.ico" MinHeight="290" MinWidth="300" Height="400" Width="500" Style="{StaticResource ProfileWindowStyle}" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" BorderBrush="#8C8E94" BorderThickness="0,0,1,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Ellipse x:Name="ProfileContainer" Grid.Row="0" Margin="5" Stroke="#007ACC" StrokeThickness="1">
+                    <Ellipse.Fill>
+                        <ImageBrush x:Name="ProfileImage" ImageSource="../Images/profile/profile.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+
+                <Button x:Name="UserLogOutButton" Content="Выход" Height="28" VerticalAlignment="Bottom" Grid.Row="1" Style="{StaticResource ActionsButtonStyle}" Click="UserLogOutButton_Click"/>
+            </Grid>
+        </Border>
+        
+        <Grid Grid.Column="1" Margin="10,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32" />
+                <RowDefinition Height="28" />
+                <RowDefinition Height="32" />
+                <RowDefinition Height="28" />
+                <RowDefinition Height="32" />
+                <RowDefinition Height="28" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Логин" Foreground="White" FontSize="20"/>
+            <TextBlock Grid.Row="2" Text="Имя" Foreground="White" FontSize="20"/>
+            <TextBlock Grid.Row="4" Text="Фамилия" Foreground="White" FontSize="20"/>
+
+
+            <TextBlock x:Name="LoginTextBlock" Grid.Row="1" Foreground="#8C8E94" FontSize="20"/>
+            <TextBlock x:Name="NameTextBlock" Grid.Row="3" Foreground="#8C8E94" FontSize="20"/>
+            <TextBlock x:Name="SurnameTextBlock" Grid.Row="5" Foreground="#8C8E94" FontSize="20"/>
+
+            <TextBlock Text="Уважаемые пользователи. Данное приложение ещё на стадии разработки. Просим вас внести вклад в ее развитие. Планируется сделать много много вещей ;). Отправить предложение о новом дизайне или баг репорт можно по адресу avinstudio@outlook.com. Заранее спасибо." TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Bottom" Grid.Row="6" Foreground="White" FontSize="10"/>
+        </Grid>
+    </Grid>
+</Window>
